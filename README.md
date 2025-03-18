@@ -1,24 +1,47 @@
-# README
+# Корзина покупок с системой скидок
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Это Ruby on Rails приложение, которое позволяет добавлять товары в корзину, применять скидку, 
+и оформлять заказ.
 
-Things you may want to cover:
+## Основные возможности
 
-* Ruby version
+- **Корзина покупок**: добавление и удаление товаров, изменение их количества.
+- **Система скидок**: возможность применения денежной скидки, которая не может превышать общую стоимость корзины.
+- **Разделение логики**: реализованы сервисные объекты для повторного заполнения пустой корзины данными по умолчанию, для склонения существительных множественного числа, а также для оформления заказа.
 
-* System dependencies
+## Технологии
 
-* Configuration
+- Ruby (версия 3.4.1)
+- Ruby on Rails (версия 8.0.2)
+- Tailwind CSS
+- SQLite
 
-* Database creation
+## Установка
 
-* Database initialization
+Клонируйте репозиторий:
 
-* How to run the test suite
+```bash
+   git clone <url>
+   cd <название_папки>
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Установите зависимости:
 
-* Deployment instructions
+```bash
+  bundle install
+```
 
-* ...
+Поднимите базу данных:
+
+```bash
+rails db:create
+rails db:migrate
+rails db:seed
+```
+
+Запустите сервер:
+
+```bash
+bin/dev
+```
+
