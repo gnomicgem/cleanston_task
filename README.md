@@ -29,6 +29,7 @@ cd <название_папки>
 
 ```bash
 bundle install
+rails tailwindcss:install
 ```
 
 Поднимите базу данных:
