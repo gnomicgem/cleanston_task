@@ -21,14 +21,14 @@
 Клонируйте репозиторий:
 
 ```bash
-   git clone <url>
-   cd <название_папки>
+git clone <url>
+cd <название_папки>
 ```
 
 Установите зависимости:
 
 ```bash
-  bundle install
+bundle install
 ```
 
 Поднимите базу данных:
