@@ -1,0 +1,11 @@
+<turbo-stream action="update" target="discount-amount">
+  <template><%= cart.discount %> ₽</template>
+</turbo-stream>
+
+<turbo-stream action="update" target="discount-slider">
+  <template>
+    <input type="range" min="0" max="1000" value="<%= cart.discount %>" class="w-full"
+           data-action="input->discount-slider#update input->auto-submit#submitForm"
+           data-discount-slider-target="slider">
+  </template>
+</turbo-stream>

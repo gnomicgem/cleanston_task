@@ -1,0 +1,10 @@
+<turbo-frame id="form">
+  <p>Передаваемая скидка: <%= local_assigns[:input_discount].inspect %></p>
+  <%= form_with url: orders_path, method: :post, scope: :order, data: { turbo_confirm: "Вы уверены?" } do |f| %>
+    <%= f.hidden_field :cart_id, value: cart.id %>
+    <%= f.hidden_field :applied_discount, value: local_assigns[:input_discount].presence %>
+    <%= f.hidden_field :total_price, value: cart.calculate_total_price(local_assigns[:input_discount]) %>
+
+    <%= f.submit "Оформить", class: "bg-primary-500 w-full max-w-[768px] h-[40px] text-black flex items-center justify-center text-center rounded-lg text-base font-semibold" %>
+  <% end %>
+</turbo-frame>

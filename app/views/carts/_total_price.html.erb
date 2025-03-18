@@ -1,0 +1,5 @@
+<turbo-frame id="total_price">
+  <p class="text-primary text-2xl font-bold">
+    <%= number_to_currency(cart.calculate_total_price(local_assigns[:input_discount] || 0), unit: "₽") %>
+  </p>
+</turbo-frame>

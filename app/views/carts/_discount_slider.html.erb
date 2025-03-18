@@ -1,0 +1,13 @@
+<turbo-frame id="discount_slider" data-controller="discount-slider">
+  <%= form_with url: cart_path(cart), method: :patch, data: { turbo_frame: "cart-total", controller: "auto-submit" } do |f| %>
+    <% discount_value = local_assigns[:input_discount] || local_assigns[:discount_max] %>
+    <%= f.range_field :discount, min: 0, max: discount_max, value: discount_value, class: "w-full",
+                      name: "discount",
+                      data: {
+                        controller: "discount-slider auto-submit",
+                        action: "input->discount-slider#update input->auto-submit#submitForm",
+                        discount_slider_amount_target: "discount-amount"
+                      } %>
+    <p><span data-discount-slider-target="amount" id="discount-amount"><%= discount_value %> ₽</span></p>
+  <% end %>
+</turbo-frame>
