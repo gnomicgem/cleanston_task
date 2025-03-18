@@ -1,13 +1,59 @@
 <turbo-frame id="discount_slider" data-controller="discount-slider">
   <%= form_with url: cart_path(cart), method: :patch, data: { turbo_frame: "cart-total", controller: "auto-submit" } do |f| %>
     <% discount_value = local_assigns[:input_discount] || local_assigns[:discount_max] %>
-    <%= f.range_field :discount, min: 0, max: discount_max, value: discount_value, class: "w-full",
+    <%= f.range_field :discount, min: 0, max: discount_max, value: discount_value, class: "w-full appearance-none cursor-pointer peer range-slider",
                       name: "discount",
                       data: {
                         controller: "discount-slider auto-submit",
                         action: "input->discount-slider#update input->auto-submit#submitForm",
                         discount_slider_amount_target: "discount-amount"
                       } %>
-    <p><span data-discount-slider-target="amount" id="discount-amount"><%= discount_value %> ₽</span></p>
   <% end %>
 </turbo-frame>
+
+<style>
+    /* Базовые стили слайдера */
+    .range-slider {
+        width: 100%;
+        height: 4px; /* Сделаем полоску немного толще */
+        border-radius: 4px;
+        background: #4AD9BD; /* Цвет полоски */
+        outline: none;
+        -webkit-appearance: none;
+        appearance: none;
+        cursor: pointer;
+    }
+
+    /* Стилизация полоски (track) */
+    .range-slider::-webkit-slider-runnable-track {
+        background: #4AD9BD;
+        height: 4px;
+        border-radius: 4px;
+    }
+
+    .range-slider::-moz-range-track {
+        background: #4AD9BD;
+        height: 4px;
+        border-radius: 4px;
+    }
+
+    /* Стилизация бегунка (thumb) */
+    .range-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 38px; /* Толще бегунок */
+        height: 38px;
+        background: #4AD9BD; /* Цвет бегунка */
+        border-radius: 50%;
+        cursor: pointer;
+        margin-top: -18px; /* Выравнивание бегунка по центру полоски */
+    }
+
+    .range-slider::-moz-range-thumb {
+        width: 38px;
+        height: 38px;
+        background: #4AD9BD;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+</style>

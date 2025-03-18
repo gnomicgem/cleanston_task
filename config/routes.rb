@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   resources :order_items
-  resources :orders, only: [:create]
+  resources :orders, only: [ :create ]
   resources :carts, only: [ :show, :update ] do
     delete :clear, on: :member
   end
-  resources :cart_items, only: [ :update, :destroy ]
+  resources :line_items, only: [ :update, :destroy ]
   resources :items
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

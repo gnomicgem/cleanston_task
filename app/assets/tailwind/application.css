@@ -2,32 +2,103 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Определяем переменные для цветов */
+@layer base {
+    :root {
+        --color-dark-900: #1E1E3C;
+        --color-dark-800: #515767;
+        --color-light-100: #F8F8F9;
+        --color-light-300: #ECEFF4;
+        --color-light-500: #C6CDD7;
+        --color-primary-500: #4AD9BD;
+        --color-secondary-500: #0F7BBE;
+        --color-gray: #8A93A3;
+        --color-white: #FFFFFF;
+    }
+}
+
 /* Кастомные шрифты */
-.font-sans {
-    font-family: 'Open Sans', sans-serif;
+@layer base {
+    .font-sans {
+        font-family: 'Open Sans', sans-serif;
+    }
 }
 
 /* Кастомные цвета */
-.bg-dark-900 { @apply bg-[#1E1E3C]; }
-.text-dark-900 { @apply text-[#1E1E3C]; }
-.bg-dark-800 { @apply bg-[#515767]; }
-.text-dark-800 { @apply text-[#515767]; }
+@layer utilities {
+    .bg-dark-900 {
+        background-color: var(--color-dark-900);
+    }
 
-.bg-light-100 { @apply bg-[#F8F8F9]; }
-.text-light-100 { @apply text-[#F8F8F9]; }
-.bg-light-300 { @apply bg-[#ECEFF4]; }
-.text-light-300 { @apply text-[#ECEFF4]; }
-.bg-light-500 { @apply bg-[#C6CDD7]; }
-.text-light-500 { @apply text-[#C6CDD7]; }
+    .text-dark-900 {
+        color: var(--color-dark-900);
+    }
 
-.bg-primary-500 { @apply bg-[#4AD9BD]; }
-.text-primary-500 { @apply text-[#4AD9BD]; }
+    .bg-dark-800 {
+        background-color: var(--color-dark-800);
+    }
 
-.bg-secondary-500 { @apply bg-[#0F7BBE]; }
-.text-secondary-500 { @apply text-[#0F7BBE]; }
+    .text-dark-800 {
+        color: var(--color-dark-800);
+    }
 
-.bg-gray { @apply bg-[#8A93A3]; }
-.text-gray { @apply text-[#8A93A3]; }
+    .bg-light-100 {
+        background-color: var(--color-light-100);
+    }
 
-.bg-white { @apply bg-[#FFFFFF]; }
-.text-white { @apply text-[#FFFFFF]; }
+    .text-light-100 {
+        color: var(--color-light-100);
+    }
+
+    .bg-light-300 {
+        background-color: var(--color-light-300);
+    }
+
+    .text-light-300 {
+        color: var(--color-light-300);
+    }
+
+    .bg-light-500 {
+        background-color: var(--color-light-500);
+    }
+
+    .text-light-500 {
+        color: var(--color-light-500);
+    }
+
+    .bg-primary-500 {
+        background-color: var(--color-primary-500);
+    }
+
+    .text-primary-500 {
+        color: var(--color-primary-500);
+    }
+
+    .bg-secondary-500 {
+        background-color: var(--color-secondary-500);
+    }
+
+    .text-secondary-500 {
+        color: var(--color-secondary-500);
+    }
+
+    .bg-gray {
+        background-color: var(--color-gray);
+    }
+
+    .text-gray {
+        color: var(--color-gray);
+    }
+
+    .bg-white {
+        background-color: var(--color-white);
+    }
+
+    .text-white {
+        color: var(--color-white);
+    }
+
+    .border-light-100 {
+        border-color: var(--color-light-100);
+    }
+}

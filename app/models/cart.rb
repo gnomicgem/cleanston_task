@@ -1,8 +1,7 @@
 class Cart < ApplicationRecord
-  has_many :cart_items, dependent: :destroy
-  has_many :items, through: :cart_items
+  has_many :line_items, as: :lineable, dependent: :destroy
   has_many :orders, dependent: :destroy
-  accepts_nested_attributes_for :cart_items
+  accepts_nested_attributes_for :line_items
   validates :discount, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1000 }
   before_save :calculate_subtotal_price
 
@@ -10,7 +9,7 @@ class Cart < ApplicationRecord
     begin
     Rails.logger.debug "Total before discount: #{subtotal_price}, discount: #{input_discount}"
     return subtotal_price if input_discount > discount
-    @applied_discount = [input_discount, subtotal_price].min.to_i
+    @applied_discount = [ input_discount, subtotal_price ].min.to_i
     Rails.logger.debug "Total after discount: #{subtotal_price - @applied_discount}, discount: #{input_discount}"
     subtotal_price - @applied_discount
     rescue => e
@@ -21,7 +20,7 @@ class Cart < ApplicationRecord
 
   def clear!
     ActiveRecord::Base.transaction do
-      cart_items.destroy_all
+      line_items.destroy_all
       save
     end
   end
@@ -29,7 +28,7 @@ class Cart < ApplicationRecord
   private
 
   def calculate_subtotal_price
-    self.subtotal_price = cart_items.sum(&:calculate_total_price)
+    self.subtotal_price = line_items.sum(&:calculate_total_price)
   end
 
   def set_discount
