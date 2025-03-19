@@ -6,16 +6,12 @@ class Cart < ApplicationRecord
   before_save :calculate_subtotal_price
 
   def calculate_total_price(input_discount)
-    begin
-    Rails.logger.debug "Total before discount: #{subtotal_price}, discount: #{input_discount}"
     return subtotal_price if input_discount > discount
-    @applied_discount = [ input_discount, subtotal_price ].min.to_i
-    Rails.logger.debug "Total after discount: #{subtotal_price - @applied_discount}, discount: #{input_discount}"
+    @applied_discount = [input_discount, subtotal_price].min.to_i
     subtotal_price - @applied_discount
-    rescue => e
-      Rails.logger.error "Error in calculate_total_price: #{e.message}"
-      subtotal_price
-    end
+  rescue => e
+    Rails.logger.error "Error in calculate_total_price: #{e.message}"
+    subtotal_price
   end
 
   def clear!
