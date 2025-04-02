@@ -24,6 +24,12 @@
     }
 }
 
+@layer components {
+    .rounded-lg {
+        border-radius: 4px;
+    }
+}
+
 /* Кастомные цвета */
 @layer utilities {
     .bg-dark-900 {
