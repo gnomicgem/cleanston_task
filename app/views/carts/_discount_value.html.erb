@@ -2,7 +2,7 @@
   <div class="flex justify-between items-center mb-8">
     <p class="text-dark-800 text-sm mb-8">Передвигая слайдер, укажите сумму скидки</p>
     <p class="text-dark-900 text-lg font-regular flex justify-between">
-    <span id="discount-amount" class="rtr text-primary-500 transition-all duration-300" data-discount-slider-target="amount">
+    <span id="discount-amount" class="animated-number text-primary-500 transition-all duration-300" data-discount-slider-target="amount">
       <% discount_amount = local_assigns[:input_discount] || local_assigns[:discount_max] %>
       <% if discount_amount.modulo(1) == 0 %>
         <%= number_with_delimiter(discount_amount.to_i, delimiter: " ") %> ₽

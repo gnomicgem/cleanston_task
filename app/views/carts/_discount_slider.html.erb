@@ -5,26 +5,24 @@
                       name: "discount",
                       data: {
                         controller: "discount-slider auto-submit",
-                        action: "input->discount-slider#update input->auto-submit#submitForm",
-                        discount_slider_amount_target: "discount-amount"
+                        action: "input->discount-slider#update",
+                        discount_slider_target: "discountAmount"
                       } %>
   <% end %>
 </turbo-frame>
 
 <style>
-    /* Базовые стили слайдера */
     .range-slider {
         width: 100%;
-        height: 4px; /* Сделаем полоску немного толще */
+        height: 4px;
         border-radius: 4px;
-        background: #4AD9BD; /* Цвет полоски */
+        background: #4AD9BD;
         outline: none;
         -webkit-appearance: none;
         appearance: none;
         cursor: pointer;
     }
 
-    /* Стилизация полоски (track) */
     .range-slider::-webkit-slider-runnable-track {
         background: #4AD9BD;
         height: 4px;
@@ -37,16 +35,15 @@
         border-radius: 4px;
     }
 
-    /* Стилизация бегунка (thumb) */
     .range-slider::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
-        width: 38px; /* Толще бегунок */
+        width: 38px;
         height: 38px;
-        background: #4AD9BD; /* Цвет бегунка */
+        background: #4AD9BD;
         border-radius: 50%;
         cursor: pointer;
-        margin-top: -18px; /* Выравнивание бегунка по центру полоски */
+        margin-top: -18px;
     }
 
     .range-slider::-moz-range-thumb {

@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Определяем переменные для цветов */
 @layer base {
     :root {
         --color-dark-900: #1E1E3C;
@@ -17,7 +16,6 @@
     }
 }
 
-/* Кастомные шрифты */
 @layer base {
     .font-sans {
         font-family: 'Open Sans', sans-serif;
@@ -30,7 +28,6 @@
     }
 }
 
-/* Кастомные цвета */
 @layer utilities {
     .bg-dark-900 {
         background-color: var(--color-dark-900);
@@ -106,5 +103,19 @@
 
     .border-light-100 {
         border-color: var(--color-light-100);
+    }
+
+    .animated-number {
+        display: inline-block;
+        transition: transform 0.3s ease-out;
+    }
+
+    .fade-out {
+        opacity: 0.9;
+    }
+
+    .fade-in {
+        opacity: 1;
+        transition: opacity 0.3s ease-in;
     }
 }
