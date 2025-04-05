@@ -1,15 +1,15 @@
 <turbo-frame id="subtotal_price">
-  <div class="flex justify-between items-center">
-    <% item_count = cart.line_items.count %>
-    <p class="text-dark-800 text-sm">
-      <%= item_count %> <%= PluralizeWordService.new(item_count, "товар", "товара", "товаров").call %> на сумму
-    </p>
-    <p class="text-dark-900 text-lg font-regular">
+  <div class="flex justify-between items-center mb-[7px]">
+    <% total_amount = cart.sum_total_amount %>
+    <span class="text-dark-800 sans-regular-13">
+      <%= total_amount %> <%= PluralizeWordService.new(total_amount, "товар", "товара", "товаров").call %> на сумму
+    </span>
+    <span class="text-dark-900 sans-semibold-16 font-regular">
       <% if cart.subtotal_price.modulo(1) == 0 %>
         <%= number_with_delimiter(cart.subtotal_price.to_i, delimiter: " ") %> ₽
       <% else %>
         <%= number_to_currency(cart.subtotal_price, unit: "", format: "%n ₽") %>
       <% end %>
-    </p>
+    </span>
   </div>
 </turbo-frame>

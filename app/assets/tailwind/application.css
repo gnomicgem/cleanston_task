@@ -14,11 +14,89 @@
         --color-gray: #8A93A3;
         --color-white: #FFFFFF;
     }
-}
 
-@layer base {
     .font-sans {
         font-family: 'Open Sans', sans-serif;
+    }
+
+    .sans-bold-22 {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 32px;
+        letter-spacing: 0;
+        text-align: right;
+        vertical-align: middle;
+    }
+
+    .sans-bold-16 {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .sans-semibold-28 {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 500;
+        font-size: 28px;
+        line-height: 40px;
+        letter-spacing: 0;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .sans-semibold-22 {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 32px;
+        letter-spacing: 0;
+        text-align: center;
+        vertical-align: top;
+    }
+
+    .sans-semibold-16 {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0;
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    .sans-semibold-14 {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0;
+        text-align: center;
+        vertical-align: top;
+    }
+
+    .sans-regular-14 {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .sans-regular-13 {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 300;
+        font-size: 13px;
+        line-height: 16px;
+        letter-spacing: 0;
+        text-align: left;
+        vertical-align: middle;
     }
 }
 
@@ -103,6 +181,10 @@
 
     .border-light-100 {
         border-color: var(--color-light-100);
+    }
+
+    .border-light-300 {
+        border-color: var(--color-light-300)
     }
 
     .animated-number {

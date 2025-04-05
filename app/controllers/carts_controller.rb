@@ -7,7 +7,6 @@ class CartsController < ApplicationController
     @discount = params[:discount].to_d.presence || @cart.discount
   end
 
-  # Очистка корзины
   def clear
     @cart.clear!
     respond_to do |format|
@@ -29,7 +28,6 @@ class CartsController < ApplicationController
           turbo_stream.replace("subtotal_price", partial: "carts/subtotal_price", locals: { cart: @cart })
         ]
       end
-      format.json { render json: { total_price: @cart.calculate_total_price(@discount) } }
       format.html { redirect_to cart_path(@cart), notice: "Корзина обновлена." }
     end
   end

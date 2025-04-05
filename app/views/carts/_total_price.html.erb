@@ -1,10 +1,10 @@
 <turbo-frame id="total_price">
-  <h3 class="text-dark-900 text-lg font-semibold">
+  <span class="text-dark-900 sans-bold-22">
     <% total_price = cart.calculate_total_price(local_assigns[:input_discount] || 0) %>
     <% if total_price.modulo(1) == 0 %>
       <%= number_with_delimiter(total_price.to_i, delimiter: " ") %> ₽
     <% else %>
       <%= number_to_currency(total_price, unit: "", format: "%n ₽") %>
     <% end %>
-  </h3>
+  </span>
 </turbo-frame>

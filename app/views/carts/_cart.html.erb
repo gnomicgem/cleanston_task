@@ -1,39 +1,38 @@
 <turbo-frame id="cart">
-  <div class="bg-white shadow-md rounded-lg p-6 mx-auto" style="width: 800px; min-height: 70px;">
+  <div class="bg-white shadow-md rounded-lg pt-24 p-6 max-w-3xl w-[768px] mx-auto min-h-[700px]">
     <div class="flex justify-between items-center mb-6">
-      <h1 class="text-2xl font-semibold text-dark-900 mb-4">Корзина</h1>
+      <h1 class="text-2xl sans-semibold-28 text-dark-900 mb-4">Корзина</h1>
 
       <% if cart.line_items.any? %>
-        <%= link_to "Очистить корзину", clear_cart_path(cart), class: "text-gray text-xs no-underline", data: { turbo_method: :delete, turbo_confirm: "Очистить всю корзину?" } %>
-        </div>
-
-        <div class="space-y-8">
-          <% cart.line_items.each do |line_item| %>
-            <%= render "line_items/line_item", line_item: line_item %>
-          <% end %>
-        </div>
-
-        <div class="bg-white rounded-lg border border-b-2 border-light-100" style="margin-top: 20px;">
-          <% if cart.subtotal_price >= cart.discount %>
-            <% discount_max = cart.discount.to_i %>
-          <% else %>
-            <% discount_max = cart.subtotal_price %>
-          <% end %>
-          <%= render "carts/subtotal_price", cart: cart %>
-          <%= render "carts/discount_value", cart: cart, input_discount: @discount, discount_max: discount_max %>
-          <%= render "carts/discount_slider", cart: cart, input_discount: @discount, discount_max: discount_max %>
-
-          <div class="flex justify-between items-center mt-6">
-            <p class="text-dark-900 text-lg font-semibold">Сумма заказа:</p>
-            <%= render "carts/total_price", cart: cart, input_discount: @discount %>
-          </div>
-        </div>
-        <%= render "orders/form", cart: cart, input_discount: @discount %>
-      <% else %>
-        </div>
-        <div class="flex-grow flex items-center justify-center" style="margin-top: 100px; margin-right: 60px;">
-          <%= render "carts/empty_cart", cart: cart %>
-        </div>
+        <%= link_to "Очистить корзину", clear_cart_path(cart), class: "text-gray sans-regular-14 no-underline", data: { turbo_method: :delete, turbo_confirm: "Очистить всю корзину?" } %>
       <% end %>
+    </div>
+
+    <% if cart.line_items.any? %>
+      <div class="space-y-8">
+        <% cart.line_items.each do |line_item| %>
+          <%= render "line_items/line_item", line_item: line_item %>
+        <% end %>
       </div>
-      </turbo-frame>
+
+      <div class="bg-white rounded-[8px] border border-b-2 border-light-100 mt-[32px] p-[16px]">
+        <% discount_max = [cart.discount.to_i, cart.subtotal_price].min %>
+        <%= render "carts/subtotal_price", cart: cart %>
+        <%= render "carts/discount_value", cart: cart, input_discount: @discount, discount_max: discount_max %>
+        <%= render "carts/discount_slider", cart: cart, input_discount: @discount, discount_max: discount_max %>
+
+        <div class="flex justify-between items-center mt-[30px] border-t-2 border-light-100 pt-[17px]">
+          <span class="text-dark-900 sans-semibold-16">Сумма заказа:</span>
+          <%= render "carts/total_price", cart: cart, input_discount: @discount %>
+        </div>
+      </div>
+      <div class="mt-[32px]">
+        <%= render "orders/form", cart: cart, input_discount: @discount %>
+      </div>
+    <% else %>
+      <div class="mt-[150px] flex justify-center">
+        <%= render "carts/empty_cart", cart: cart %>
+      </div>
+    <% end %>
+  </div>
+</turbo-frame>

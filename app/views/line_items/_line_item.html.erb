@@ -1,31 +1,23 @@
 <turbo-frame id="line-item-<%= line_item.id %>">
   <div class="grid grid-cols-[1fr_1fr_1fr] items-center border-b-2 border-light-100 py-6 mb-4 gap-6 px-8">
-    <!-- Изображение и название товара -->
-    <div class="flex items-center">
-      <img src="<%= asset_path(line_item.item.image) %>" alt="<%= line_item.item.name %>" class="w-24 h-24 object-cover rounded-lg">
-      <p class="text-dark-900 text-sm ml-4 w-40 break-words"><%= line_item.item.name %></p>
+    <div class="flex items-center w-[400px] h=[100px]">
+      <img src="<%= asset_path(line_item.item.image) %>" alt="<%= line_item.item.name %>" class="w-[100px] h-[100px] object-cover rounded-lg mr-[16px]">
+      <p class="text-dark-900 sans-regular-14 ml-4 break-words"><%= line_item.item.name %></p>
     </div>
 
-    <!-- Количество товара -->
     <div class="flex items-center justify-center" data-controller="line-item-amount">
       <%= form_with model: line_item, url: line_item_path(line_item), turbo_method: :patch, data: { turbo_frame: "line-item-#{line_item.id}" }, class: "hidden" do |f| %>
         <%= f.hidden_field :amount, value: line_item.amount, data: { target: "line-item-amount.input" } %>
       <% end %>
 
       <div class="flex items-center border border-none rounded-lg bg-light-300 px-4 gap-2">
-        <!-- Кнопка минус слева -->
-        <button type="button" class="rounded-lg px-2 py-1 text-lg border border-none w-[25.33px] h-[24px]" data-action="click->line-item-amount#decrease">-</button>
-
-        <!-- Количество товара -->
-        <span class="rounded-lg w-12 text-center w-[25.33px] h-[24px]" data-line-item-amount-target="display"><%= line_item.amount %></span>
-
-        <!-- Кнопка плюс справа -->
+        <button type="button" class="rounded-lg px-2 py-1 text-lg border border-none w-[25.33px] h-[24px]" data-action="click->line-item-amount#decrease">−</button>
+        <span class="rounded-lg sans-bold-16 text-dark-900 text-center w-[25.33px] h-[24px]" data-line-item-amount-target="display"><%= line_item.amount %></span>
         <button type="button" class="rounded-lg px-2 py-1 text-lg border border-none w-[25.33px] h-[24px]" data-action="click->line-item-amount#increase">+</button>
       </div>
     </div>
 
-    <!-- Удаление товара и цена -->
-    <div class="flex flex-col items-end">
+    <div class="flex flex-col items-end pl-[2px]">
       <%= link_to line_item_path(line_item), data: { turbo_method: :delete, turbo_confirm: "Удалить товар?" }, class: "text-gray p-2" do %>
         <%= image_tag("icons/trash.svg", alt: "Удалить", class: "p-2 w-5 h-5") %>
       <% end %>

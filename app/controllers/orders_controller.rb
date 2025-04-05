@@ -16,7 +16,6 @@ class OrdersController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_order_to_create
     @order = CreateOrderService.new(
       cart: Cart.find_by(id: order_params[:cart_id]) || Cart.find_by(id: session[:cart_id]),

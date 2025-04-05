@@ -14,6 +14,10 @@ class Cart < ApplicationRecord
     subtotal_price
   end
 
+  def sum_total_amount
+    line_items.sum(:amount)
+  end
+
   def clear!
     ActiveRecord::Base.transaction do
       line_items.destroy_all
